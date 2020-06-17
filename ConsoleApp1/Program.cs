@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ConsoleApp1.Repositories;
+using System;
 
 namespace ConsoleApp1
 {
@@ -9,7 +9,7 @@ namespace ConsoleApp1
 
         static Program()
         {
-            _repository = new VerboseInMemoryRepository();
+            _repository = new FileRepository();
         }
 
         /// <summary>
@@ -63,78 +63,13 @@ namespace ConsoleApp1
 
         private static void Initialize()
         {
-            for (var i = 0; i <= 2; i++)
+            if (_repository.Count == 0)
             {
-                _repository.Add(i, $"hi {i}");
+                for (var i = 0; i <= 2; i++)
+                {
+                    _repository.Add(i, $"hi {i}");
+                }
             }
-        }
-    }
-
-    public interface IRepository
-    {
-        int Count { get; }
-
-        void Add(
-            int index,
-            string value);
-
-        string GetByKey(
-            int key);
-    }
-
-    public class InMemoryRepository
-        : IRepository
-    {
-        private readonly Dictionary<int, string> _list;
-
-        public InMemoryRepository()
-        {
-            _list = new Dictionary<int, string>();
-        }
-
-        public int Count => _list.Count;
-
-        public void Add(
-            int index, 
-            string value)
-        {
-            _list.Add(index, value);
-        }
-
-        public string GetByKey(
-            int key)
-        {
-            return _list[key];
-        }
-    }
-
-    public class VerboseInMemoryRepository
-        : IRepository
-    {
-        private readonly Dictionary<int, string> _list;
-
-        public VerboseInMemoryRepository()
-        {
-            _list = new Dictionary<int, string>();
-        }
-
-        public int Count => _list.Count;
-
-        public void Add(
-            int index, 
-            string value)
-        {
-            Console.WriteLine("You added stuff");
-
-            _list.Add(index, value);
-        }
-
-        public string GetByKey(
-            int key)
-        {
-            Console.WriteLine("You listed stuff");
-
-            return _list[key];
         }
     }
 }
