@@ -1,14 +1,21 @@
-﻿namespace ConsoleApp1.Repositories
+﻿namespace Todo.Domain.Repositories
 {
     public interface IRepository
     {
         int Count { get; }
 
         void Add(
-            int index,
+            int key,
             string value);
 
         string GetByKey(
             int key);
+    }
+
+    public interface ITaskListRepository
+    {
+        int Count { get; }
+
+
     }
 }

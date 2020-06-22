@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Todo.Domain.Repositories;
 
-namespace ConsoleApp1.Repositories
+namespace Todo.Domain.Repositories
 {
     public class InMemoryRepository
         : IRepository
