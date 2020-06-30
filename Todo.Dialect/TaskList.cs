@@ -29,7 +29,7 @@ namespace Todo.Dialect
             }
         }
 
-        public ReadOnlyDictionary<int,Task> Items => 
+        public ReadOnlyDictionary<int, Task> Items => 
             new ReadOnlyDictionary<int, Task>(_items);
 
         public void Add(

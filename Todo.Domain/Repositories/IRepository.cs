@@ -1,6 +1,4 @@
-﻿using Todo.Dialect;
-
-namespace Todo.Domain.Repositories
+﻿namespace Todo.Domain.Repositories
 {
     public interface IRepository
     {
@@ -12,14 +10,5 @@ namespace Todo.Domain.Repositories
 
         string GetByKey(
             int key);
-    }
-
-    public interface ITaskListRepository
-    {
-        int Count { get; }
-
-        void Add(
-            int key,
-            TaskList taskList);
     }
 }
